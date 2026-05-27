@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-require 'debug/window'
+require 'dx-ruby/window'
 
 class ActionListener
   def action

@@ -1,27 +1,27 @@
 #! /usr/bin/env ruby
 
 #
-# ƒŠƒ\[ƒXƒ‚ƒWƒ…[ƒ‹‚ÌƒeƒXƒg
+# ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìƒeï¿½Xï¿½g
 #
-require 'debug/resource'
-require '../window/debug/window'
-require '../sound/debug/sound'
+require 'dx-ruby/resource'
+require 'dx-ruby/window'
+require 'dx-ruby/sound'
 
-# new‚Åw’è‚µ‚½ƒpƒX‚ªƒA[ƒJƒCƒu‚Å‚È‚¯‚ê‚ÎA¶ƒŠƒ\[ƒXƒ‚[ƒh‚É‚È‚é
-# get‚Åæ“¾‚µ‚½ƒtƒ@ƒCƒ‹‚ÍStringŒ^‚É‚È‚éB
-#ƒoƒCƒiƒŠ‚Ì–‚à‚ ‚é‚Ì‚Å\0‚Å~‚Ü‚ç‚È‚¢‚æ‚¤‚ÉAƒIƒuƒWƒFƒNƒg‚ÌƒTƒCƒY‚ğæ“¾‚·‚é–B
+# newï¿½Åwï¿½è‚µï¿½ï¿½ï¿½pï¿½Xï¿½ï¿½ï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½Å‚È‚ï¿½ï¿½ï¿½ÎAï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½[ï¿½hï¿½É‚È‚ï¿½
+# getï¿½Åæ“¾ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½Stringï¿½^ï¿½É‚È‚ï¿½B
+#ï¿½oï¿½Cï¿½iï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½\0ï¿½Å~ï¿½Ü‚ï¿½È‚ï¿½ï¿½æ‚¤ï¿½ÉAï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ÌƒTï¿½Cï¿½Yï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½é–ï¿½B
 resource = Resource.new('./hoge')
 file = resource.get('test.txt')
 print file
 
-# new‚Åw’è‚µ‚½ƒpƒX‚ªƒA[ƒJƒCƒu‚È‚ç‚ÎAƒA[ƒJƒCƒuƒ‚[ƒh‚É‚È‚é
-# get‚Å“¯—l‚ÉƒA[ƒJƒCƒu‚©‚çæ‚èo‚¹‚éi‚æ‚¤‚É‚È‚é—\’èjB
+# newï¿½Åwï¿½è‚µï¿½ï¿½ï¿½pï¿½Xï¿½ï¿½ï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½È‚ï¿½ÎAï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½hï¿½É‚È‚ï¿½
+# getï¿½Å“ï¿½ï¿½lï¿½ÉƒAï¿½[ï¿½Jï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½iï¿½æ‚¤ï¿½É‚È‚ï¿½\ï¿½ï¿½jï¿½B
 resource2 = Resource.new('./fuga')
 file = resource2.get('test2.txt');
 print file
 
-# ˆê‰A“®ì“I‚É‚Í¬Œ÷‚µ‚½‚ªA
-# ‰ğ“€’†ƒvƒƒOƒŒƒXƒo[‚ª•\¦‚³‚ê‚é‚Ì‚ÍAÁ‚¹‚È‚¢–Í—lB
+# ï¿½ê‰ï¿½Aï¿½ï¿½ï¿½ï¿½Iï¿½É‚Íï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A
+# ï¿½ğ“€’ï¿½ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Xï¿½oï¿½[ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ÍAï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Í—lï¿½B
 resource3 = Resource.new('./sample03.zip')
 file = resource3.get('sample03.mp3')
 

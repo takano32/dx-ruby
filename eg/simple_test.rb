@@ -1,10 +1,10 @@
 #! /usr/bin/env ruby
 # Simple test to verify dx-ruby modules load correctly
-require 'window'
-require 'graphics'
-require 'sound'
-require 'resource'
-require 'input'
+require 'dx-ruby/window'
+require 'dx-ruby/graphics'
+require 'dx-ruby/sound'
+require 'dx-ruby/resource'
+require 'dx-ruby/input'
 
 puts "All modules loaded successfully!"
 puts "Ruby version: #{RUBY_VERSION}"

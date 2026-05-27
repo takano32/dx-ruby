@@ -1,9 +1,9 @@
 #! /usr/bin/env ruby
-require 'd4r/window'
-require 'd4r/sound'
-require 'd4r/resource'
-require 'd4r/graphics'
-require 'd4r/input'
+require 'dx-ruby/window'
+require 'dx-ruby/sound'
+require 'dx-ruby/resource'
+require 'dx-ruby/graphics'
+require 'dx-ruby/input'
 
 window = Window.new
 window.create

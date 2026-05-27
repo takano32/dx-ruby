@@ -1,10 +1,9 @@
 #! /usr/bin/env ruby
-require 'window'
-require 'sound'
-require 'resource'
-require 'graphics'
-require '../input/debug/input'
-#require 'input'
+require 'dx-ruby/window'
+require 'dx-ruby/sound'
+require 'dx-ruby/resource'
+require 'dx-ruby/graphics'
+require 'dx-ruby/input'
 
 window = Window.new
 window.create

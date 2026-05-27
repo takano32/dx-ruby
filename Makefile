@@ -41,21 +41,24 @@ WINE_CMD      = WINEPREFIX=$(WINEPREFIX) WINEPATH="$(WINEPATH)" wine $(GCC) \
 # インストール先
 OUTDIR        = $(RUBY_WIN)/lib/ruby/site_ruby/3.3.0
 
+# ビルド成果物の出力先 (require 'dx-ruby/...' に対応するサブディレクトリ)
+SODIR         = $(SRC_W)\\dx-ruby
+
 .PHONY: all install run clean
 
-all: window.so graphics.so sound.so input.so resource.so
+all: dx-ruby/window.so dx-ruby/graphics.so dx-ruby/sound.so dx-ruby/input.so dx-ruby/resource.so
 
 # --- Window ---
-window.so:
+dx-ruby/window.so:
 	$(WINE_CMD) \
 	  -I"$(SRC_W)\\Window" \
 	  "$(SRC_W)\\Window\\Window.cpp" \
 	  "$(SRC_W)\\Window\\WindowClass.cpp" \
 	  $(WIN32_LIBS) \
-	  -o "$(SRC_W)\\window.so"
+	  -o "$(SODIR)\\window.so"
 
 # --- Graphics ---
-graphics.so:
+dx-ruby/graphics.so:
 	$(WINE_CMD) \
 	  -I"$(SRC_W)\\Graphics" \
 	  "$(SRC_W)\\Graphics\\Graphics.cpp" \
@@ -67,10 +70,10 @@ graphics.so:
 	  "$(SRC_W)\\Graphics\\GraphicsTexture.cpp" \
 	  "$(SRC_W)\\Util\\Log.cpp" \
 	  $(WIN32_LIBS) -ld3d9 -ld3dx9 -ldxguid \
-	  -o "$(SRC_W)\\graphics.so"
+	  -o "$(SODIR)\\graphics.so"
 
 # --- Sound ---
-sound.so:
+dx-ruby/sound.so:
 	$(WINE_CMD) \
 	  -I"$(SRC_W)\\Sound" \
 	  "$(SRC_W)\\Sound\\Sound.cpp" \
@@ -84,10 +87,10 @@ sound.so:
 	  "$(SRC_W)\\Util\\Thread.cpp" \
 	  "$(SRC_W)\\Util\\File.cpp" \
 	  $(WIN32_LIBS) -ldsound -ldxguid -lwinmm -lmsacm32 \
-	  -o "$(SRC_W)\\sound.so"
+	  -o "$(SODIR)\\sound.so"
 
 # --- Input ---
-input.so:
+dx-ruby/input.so:
 	$(WINE_CMD) \
 	  -I"$(SRC_W)\\Input" \
 	  "$(SRC_W)\\Input\\Input.cpp" \
@@ -98,23 +101,24 @@ input.so:
 	  "$(SRC_W)\\Input\\JoystickDevice.cpp" \
 	  "$(SRC_W)\\Util\\Log.cpp" \
 	  $(WIN32_LIBS) -ldinput -ldxguid \
-	  -o "$(SRC_W)\\input.so"
+	  -o "$(SODIR)\\input.so"
 
 # --- Resource ---
-resource.so:
+dx-ruby/resource.so:
 	$(WINE_CMD) \
 	  -I"$(SRC_W)\\Resource" \
 	  "$(SRC_W)\\Resource\\Resource.cpp" \
 	  "$(SRC_W)\\Resource\\ResourceClass.cpp" \
 	  "$(SRC_W)\\Resource\\ResourceSyetem.cpp" \
 	  $(WIN32_LIBS) \
-	  -o "$(SRC_W)\\resource.so"
+	  -o "$(SODIR)\\resource.so"
 
 # インストール
 install: all
-	install -d $(OUTDIR)
-	install -m 644 window.so graphics.so sound.so input.so resource.so $(OUTDIR)/
-	@echo "Installed to $(OUTDIR)/"
+	install -d $(OUTDIR)/dx-ruby
+	install -m 644 dx-ruby/window.so dx-ruby/graphics.so dx-ruby/sound.so \
+	               dx-ruby/input.so  dx-ruby/resource.so $(OUTDIR)/dx-ruby/
+	@echo "Installed to $(OUTDIR)/dx-ruby/"
 
 # デモ実行
 run: install
@@ -123,4 +127,5 @@ run: install
 
 # クリーン
 clean:
-	rm -f window.so graphics.so sound.so input.so resource.so
+	rm -f dx-ruby/window.so dx-ruby/graphics.so dx-ruby/sound.so \
+	      dx-ruby/input.so  dx-ruby/resource.so
