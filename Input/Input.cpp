@@ -1,4 +1,3 @@
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 #include "Input.h"
@@ -13,7 +12,7 @@ struct InputData {
 
 static void input_dfree( struct InputData* data ) {
 	if( data->klass ) {
-		//TODO: delete‚·‚é‚Æ—Ž‚¿‚é‚±‚Æ‚ª‚ ‚é
+		//TODO: deleteï¿½ï¿½ï¿½ï¿½Æ—ï¿½ï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½
 		delete data->klass;
 		data->klass = NULL;
 	}
@@ -46,13 +45,13 @@ static VALUE input_is_down( VALUE self, VALUE key ) {
 	//char* RSTRING(str)->ptr
 	//char* joy_head = "joy";
 	//char* key_head = "key";
-	return data->klass->IsDown( RSTRING(key)->ptr ) == TRUE?Qtrue:Qfalse;
+	return data->klass->IsDown( RSTRING_PTR(key) ) == TRUE?Qtrue:Qfalse;
 }
 
 static VALUE input_is_up( VALUE self, VALUE key ) {
 	struct InputData *data;
 	Data_Get_Struct(self, struct InputData, data);
-	return data->klass->IsUp( RSTRING(key)->ptr ) == TRUE?Qtrue:Qfalse;
+	return data->klass->IsUp( RSTRING_PTR(key) ) == TRUE?Qtrue:Qfalse;
 }
 
 void Init_input() {

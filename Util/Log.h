@@ -3,8 +3,9 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include <iostream.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
+using namespace std;
 namespace base{
 class Log{
 	enum Level{

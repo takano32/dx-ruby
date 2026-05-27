@@ -1,4 +1,3 @@
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 #include "Window.h"
@@ -63,7 +62,7 @@ static VALUE window_get_handle( VALUE self ) {
 	if( !handle ) {
 		return Qnil;
 	}else{
-		return INT2FIX(handle);
+		return LONG2NUM((LONG)(ULONG_PTR)handle);
 	}
 }
 
@@ -96,21 +95,21 @@ void Init_window() {
 LRESULT CALLBACK window_WndProc( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam ) {
 	VALUE window = (VALUE)WindowClass::GetUserData( hwnd );
 	//WindowClass* window = (WindowClass*)GetUserData( hwnd );
-	// Windows ‚©‚ç‚ÌƒƒbƒZ[ƒW‚É‚æ‚è•ªŠò
-	// Listener‚ğ“±“ü‚·‚é—\’èD
+	// Windows ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½É‚ï¿½è•ªï¿½ï¿½
+	// Listenerï¿½ğ“±“ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½D
 	switch (message){
 	case WM_CREATE:
 		//window_message( window, rb_str_new2("WM_CREATE") );
 		break;
-	case WM_KEYDOWN:				// ƒL[“ü—Í
-        switch( wParam ){			// ƒL[‚É‰‚¶‚Äˆ— 
-		case VK_ESCAPE:				// I—¹ƒ{ƒ^ƒ“
+	case WM_KEYDOWN:				// ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½
+        switch( wParam ){			// ï¿½Lï¿½[ï¿½É‰ï¿½ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ 
+		case VK_ESCAPE:				// ï¿½Iï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½
 		case VK_F12:
-			PostMessage( hwnd, WM_CLOSE, 0, 0 );	// Windows‚Ö ƒvƒƒOƒ‰ƒ€‚¨‚í‚è
+			PostMessage( hwnd, WM_CLOSE, 0, 0 );	// Windowsï¿½ï¿½ ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			break;
 		}
 		break;	
-		case WM_DESTROY:		// ƒvƒƒOƒ‰ƒ€I—¹
+		case WM_DESTROY:		// ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½
 			PostQuitMessage(0);
 			return 0;
 			break;
@@ -120,6 +119,6 @@ LRESULT CALLBACK window_WndProc( HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 			break;
 	}
 	
-	// ƒfƒtƒHƒ‹ƒg
+	// ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½g
 	return DefWindowProc( hwnd, message, wParam, lParam);
 }

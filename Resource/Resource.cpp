@@ -1,4 +1,3 @@
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 #include "Resource.h"
@@ -31,8 +30,8 @@ static VALUE resource_read_in( VALUE self, VALUE resource_name ) {
 	Data_Get_Struct(self, struct ResourceData, data);
 
 	StringValue(resource_name);
-	// ƒƒ‚ƒŠƒRƒs[‚Ìˆ—‚ª—]Œv‚É‚È‚é‚ªAString‚Ì’†g‚ğ‘‚«Š·‚¦‚é‚Ì‚Í
-	// ‚«‚¿‚ñ‚Æ‚â‚é‚É‚Í‘½•ªƒXƒŒƒbƒhƒZ[ƒt‚É‚µ‚È‚¢‚Æ‚¢‚¯‚È‚­‚Ä‘å•ÏB
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½sï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½vï¿½É‚È‚é‚ªï¿½AStringï¿½Ì’ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½É‚Í‘ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½bï¿½hï¿½Zï¿½[ï¿½tï¿½É‚ï¿½ï¿½È‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Ä‘ï¿½ÏB
 	unsigned int size = data->klass->GetFileSize( StringValuePtr(resource_name) );
 	if( size == 0 ){
 		rb_raise(rb_eIOError, "unable to read file: %s", StringValuePtr(resource_name));
@@ -55,10 +54,10 @@ void Init_resource() {
     Resource = rb_define_class("Resource", rb_cObject);
     rb_define_alloc_func(Resource, resource_alloc);
 
-	// param1:ŠÇ—‚·‚éƒA[ƒJƒCƒu‚Ü‚½‚ÍAƒfƒBƒŒƒNƒgƒŠ
+	// param1:ï¿½Ç—ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½Ü‚ï¿½ï¿½ÍAï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
     rb_define_private_method(Resource, "initialize", (ruby_method)resource_initialize, 1);
 
-	// param1:æ‚èo‚µ‚½‚¢ƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹–¼
-	// retval:¬Œ÷‚Ìê‡Aƒƒ‚ƒŠƒCƒ[ƒW(String)A¸”s‚Ìê‡IOException
+	// param1:ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
+	// retval:ï¿½ï¿½ï¿½ï¿½ï¿½Ìê‡ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½W(String)ï¿½Aï¿½ï¿½ï¿½sï¿½Ìê‡IOException
 	rb_define_method(Resource, "get", (ruby_method)resource_read_in, 1);
 }

@@ -1,4 +1,3 @@
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 #include "Sound.h"
@@ -13,7 +12,7 @@ struct SoundData {
 
 static void sound_dfree( struct SoundData* data ) {
 	if( data->klass ) {
-		//TODO: delete‚·‚é‚Æ—Ž‚¿‚é‚±‚Æ‚ª‚ ‚é
+		//TODO: deleteï¿½ï¿½ï¿½ï¿½Æ—ï¿½ï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½
 		//delete data->klass;
 		data->klass = NULL;
 	}
@@ -45,8 +44,8 @@ static VALUE sound_load( VALUE self, VALUE id, VALUE sound_data ) {
 	Data_Get_Struct(self, struct SoundData, data);
     
 	data->sound_data = sound_data;
-	BOOL ret = data->klass->Load( NUM2INT(id), 
-		(BYTE*)RSTRING(sound_data)->ptr, RSTRING(sound_data)->len );
+	BOOL ret = data->klass->Load( NUM2INT(id),
+		(BYTE*)RSTRING_PTR(sound_data), (int)RSTRING_LEN(sound_data) );
 	return ret==TRUE?Qtrue:Qfalse;
 }
 
@@ -55,7 +54,7 @@ static VALUE sound_open( VALUE self, VALUE id, VALUE name ) {
 	Data_Get_Struct(self, struct SoundData, data);
     
 	StringValue(name);
-	BOOL ret = data->klass->Open( NUM2INT(id), RSTRING(name)->ptr );
+	BOOL ret = data->klass->Open( NUM2INT(id), RSTRING_PTR(name) );
 	return ret==TRUE?Qtrue:Qfalse;
 }
 

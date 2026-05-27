@@ -1,7 +1,4 @@
 #pragma once
-#pragma comment( lib, "dxguid.lib" )
-#pragma comment( lib, "d3d9.lib" )
-#pragma comment( lib, "d3dx9.lib")
 
 
 #define RELEASE(p) { if(p){(p)->Release();p=NULL;} }

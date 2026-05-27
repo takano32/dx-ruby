@@ -1,4 +1,3 @@
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 #include "Graphics.h"
@@ -36,8 +35,8 @@ static VALUE graphics_regist_texture( VALUE self, VALUE texture_id, VALUE textur
 	Data_Get_Struct(self, struct GraphicsData, data);
     
 	data->texture_data = texture_data;
-	BOOL ret = data->klass->RegistTexture( NUM2INT(texture_id), 
-		(BYTE*)RSTRING(texture_data)->ptr, RSTRING(texture_data)->len );
+	BOOL ret = data->klass->RegistTexture( NUM2INT(texture_id),
+		(BYTE*)RSTRING_PTR(texture_data), (int)RSTRING_LEN(texture_data) );
 	return ret==TRUE?Qtrue:Qfalse;
 }
 
@@ -101,7 +100,7 @@ static VALUE graphics_draw_text( VALUE self, VALUE string,
 	struct GraphicsData *data;
 	Data_Get_Struct(self, struct GraphicsData, data);
 	if( string == Qnil ) return Qfalse;
-	BOOL ret = data->klass->DrawText( RSTRING(string)->ptr,
+	BOOL ret = data->klass->DrawText( RSTRING_PTR(string),
 		NUM2INT(x), NUM2INT(y) );
 	return ret==TRUE?Qtrue:Qfalse;
 }
@@ -172,7 +171,7 @@ GraphicsSprite* pSprite = new GraphicsSprite( pGraphicsSystem );
 pSprite->Load( pTexture, 0, 0, 256, 256 );
 
 
-  1‰ñ‚Ì•`‰æ
+  1ï¿½ï¿½Ì•`ï¿½ï¿½
   Begin
 pGraphicsSystem->Clear( D3DCOLOR_XRGB(0,0,0) );
 pGraphicsSystem->BeginScene();

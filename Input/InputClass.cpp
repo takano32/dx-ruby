@@ -12,7 +12,7 @@ InputClass::~InputClass() {
 }
 
 
-InputClass::Update() {
+BOOL InputClass::Update() {
 	return (_pKeyboardDevice->Update() && _pJoystickDevice->Update() );
 }
 

@@ -1,11 +1,11 @@
 #pragma once
 
+#include <winsock2.h>
 #include <windows.h>
 #include <map>
 
 using namespace std;
 
-#pragma comment (lib, "msvcrt-ruby18.lib")
 #include <ruby.h>
 
 /*

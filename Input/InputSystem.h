@@ -1,8 +1,6 @@
 #pragma once
 
 #define DIRECTINPUT_VERSION 0x700
-#pragma comment(lib, "dinput.lib")
-#pragma comment(lib, "dxguid.lib")
 #define RELEASE(x) if(x){ x->Release(); x=NULL; }
 
 

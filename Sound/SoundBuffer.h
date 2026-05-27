@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma comment(lib, "winmm.lib")
-
 #include <windows.h>
 #include <dsound.h>
 #include "SoundSystem.h"
@@ -20,7 +18,7 @@ namespace base{
 		LPDIRECTSOUND			_pSoundObject;
 		BYTE					*_pLoadBuffer;
 		DWORD					_length;
-		LPDIRECTSOUNDBUFFER		_pBuffer;	// ƒoƒbƒtƒ@
+		LPDIRECTSOUNDBUFFER		_pBuffer;	// ï¿½oï¿½bï¿½tï¿½@
 		WAVEFORMATEX* _pFormat;
 
 		HMMIO _hMmio;

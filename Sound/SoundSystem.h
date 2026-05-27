@@ -1,6 +1,5 @@
 
 #pragma once
-#pragma comment(lib, "dsound.lib")
 
 
 #include <windows.h>
