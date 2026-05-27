@@ -120,9 +120,9 @@ install: all
 	               dx-ruby/input.so  dx-ruby/resource.so $(OUTDIR)/dx-ruby/
 	@echo "Installed to $(OUTDIR)/dx-ruby/"
 
-# デモ実行
+# デモ実行 (eg/ をカレントにすることで Resource.new('data') が eg/data/ を解決する)
 run: install
-	WINEPREFIX=$(WINEPREFIX) WINEPATH="$(WINEPATH)" \
+	cd eg && WINEPREFIX=$(WINEPREFIX) WINEPATH="$(WINEPATH)" \
 	wine $(RUBY_EXE) "$(SRC_W)\\eg\\graphics_demo.rbw"
 
 # クリーン
