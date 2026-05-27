@@ -2,10 +2,10 @@
 using namespace base;
 
 ResourceSystem::ResourceSystem(const char *path)
-:_path(path)
+:_path(path), _isArchive(false)
 {
 	if(!LoadLibrary()){
-		printf("ŒxFUNZIP32.DLL‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñBZIP‘ŒÉ‚Í’T‚¹‚Ü‚¹‚ñ\n");
+		printf("ï¿½xï¿½ï¿½ï¿½FUNZIP32.DLLï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½BZIPï¿½ï¿½ï¿½É‚Í’Tï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½\n");
 	}
 	if( !InitializeFunction() ) return;
 
@@ -54,14 +54,14 @@ BOOL ResourceSystem::InitializeFunction() {
 	return TRUE;
 }
 
-//	r = (*fpTestFunc)(NULL,"c:__test test/test2.jpg", buf, 100, &lpTime, NULL, &lpdwWriteSize);
+//	r = (*fpTestFunc)(NULL,"c:ï¿½_ï¿½_test test/test2.jpg", buf, 100, &lpTime, NULL, &lpdwWriteSize);
 
 DWORD ResourceSystem::GetFileSize(LPCSTR szFileName)
 {
 	if( _isArchive ){
-		// ƒA[ƒJƒCƒuƒ‚[ƒh
+		// ï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½h
 		if( ! _fpUnZipOpenArchive ){
-			printf("ŒxF‘ŒÉ—pDLL‚ª—LŒø‚Å‚Í‚ ‚è‚Ü‚¹‚ñ\n");
+			printf("ï¿½xï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½É—pDLLï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Å‚Í‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½\n");
 			return 0;
 		}
 		int retval;
@@ -78,7 +78,7 @@ DWORD ResourceSystem::GetFileSize(LPCSTR szFileName)
 		return subInfo.dwOriginalSize;
 	}
 	else{
-		// ¶ƒŠƒ\[ƒXƒ‚[ƒh
+		// ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½[ï¿½h
 		DWORD result;
 		HANDLE hFile = CreateFile(AddPath(szFileName).c_str(), GENERIC_READ, 0,NULL,
 			OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
@@ -95,9 +95,9 @@ BOOL ResourceSystem::ReadIn(LPCSTR szFileName, LPBYTE szBuffer,
 								const DWORD dwSize, LPDWORD lpdwWriteSize)
 {
 	if( _isArchive ){
-		// ƒA[ƒJƒCƒuƒ‚[ƒh
+		// ï¿½Aï¿½[ï¿½Jï¿½Cï¿½uï¿½ï¿½ï¿½[ï¿½h
 		if( ! _fpUnZipExtractMem ){
-			printf("ŒxF‘ŒÉ—pDLL‚ª—LŒø‚Å‚Í‚ ‚è‚Ü‚¹‚ñ\n");
+			printf("ï¿½xï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½É—pDLLï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Å‚Í‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½\n");
 			return FALSE;
 		}
 		string command = string(" --i ") + _path + " " + szFileName;
@@ -106,7 +106,7 @@ BOOL ResourceSystem::ReadIn(LPCSTR szFileName, LPBYTE szBuffer,
 		return (retval == 0);
 	}
 	else{
-		// ¶ƒŠƒ\[ƒXƒ‚[ƒh
+		// ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½[ï¿½h
 		HANDLE hFile = CreateFile(AddPath(szFileName).c_str(), GENERIC_READ, 0,NULL,
 			OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 		if(hFile == INVALID_HANDLE_VALUE){
