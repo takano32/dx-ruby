@@ -118,6 +118,11 @@ window.main
 
 ## 既知の問題
 
+- **Sound 再生クラッシュ (ARM64 + Wine WOW64)**: `Sound#play` / `Sound#play_with_fade` を呼ぶと
+  DirectSound のバックグラウンドオーディオスレッドが `kernel32.dll` 内
+  (`0x7b56f991` / `STATUS_ACCESS_VIOLATION`) でクラッシュする。
+  Wine 10.16 の ARM64 WOW64 モードで 32-bit DirectSound スレッドが正常起動しない Wine 側の制限。
+  `Sound#load` までは動作する。グラフィックスとインプットは影響なし。
 - **Sound モジュール終了時クラッシュ**: 元のコードの既知の問題 (`TODO: delete時に落ちることがある`)。BGMスレッドのクリーンアップが未実装。
 - **UNZIP32.DLL**: ZIP アーカイブ機能には日本語 ZIP DLL (UNZIP32.DLL) が必要。ない場合はディレクトリからの直接読み込みにフォールバック。
 - **表示**: Wayland 環境では Wine の Waylanddrv を使用。X11 環境では通常の DirectX 表示が利用可能。
