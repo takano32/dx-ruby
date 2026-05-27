@@ -1,16 +1,15 @@
 # dx-ruby
 
-Ruby + DirectX 9 ゲームライブラリの原型。現代の [DXRuby gem](https://github.com/mirichi/dxruby) の前身にあたる歴史的なプロジェクト。
+Ruby + DirectX 9 ゲームライブラリ。2009 年頃に作成された Windows 専用の独立プロジェクト。
 
-## 歴史的背景
+## 背景
 
-このプロジェクトは 2003〜2004 年頃、Visual Studio 6.0 / Ruby 1.8 / DirectX 9 の環境向けに作成された Windows 専用ゲームライブラリです。
+このプロジェクトは 2009 年頃、Visual Studio 6.0 / Ruby 1.8 / DirectX 9 の環境向けに作成された Windows 専用ゲームライブラリです。
 
-| 時代 | 内容 |
+| 項目 | 内容 |
 |------|------|
 | 当時の環境 | Windows XP / Ruby 1.8 / DirectX 9 SDK / Visual Studio 6.0 |
 | 現在の動作環境 | Linux (aarch64) + Wine 10.x + Ruby 3.3 for Windows (i386) |
-| 後継プロジェクト | [DXRuby](https://github.com/mirichi/dxruby) |
 
 ## モジュール構成
 
